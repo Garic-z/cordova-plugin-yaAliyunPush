@@ -1,0 +1,29 @@
+{
+  "name": "yaaliyunpush",
+  "version": "1.0.0",
+  "description": "Cordova Push Plugin,use Aliyun SDK",
+  "cordova": {
+    "id": "cordova-plugin-yaaliyunpush",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "aliyun",
+    "push",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git"
+  },
+  "engines": [{
+    "name": "cordova-android",
+    "version": ">=5.0.0"
+  }],
+  "author": "Garic",
+  "license": "Apache 2.0"
+}

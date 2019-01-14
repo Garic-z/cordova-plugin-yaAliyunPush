@@ -1,0 +1,26 @@
+def minSdkVersion = 19
+
+if(cdvMinSdkVersion == null) {
+    ext.cdvMinSdkVersion = minSdkVersion;
+} else if (cdvMinSdkVersion.toInteger() < minSdkVersion) {
+    ext.cdvMinSdkVersion = minSdkVersion;
+}
+
+repositories{
+    jcenter()
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile (name:'alicloud-android-push-3.1.3', ext: 'aar')
+}
+
+android {
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}
