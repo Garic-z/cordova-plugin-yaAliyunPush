@@ -14,7 +14,6 @@
 - (void)onMessage:(CDVInvokedUrlCommand*)command;
 
 /**
- * 阿里云推送绑定账号名
  * 获取设备唯一标识deviceId，deviceId为阿里云移动推送过程中对设备的唯一标识（并不是设备UUID/UDID）
  */
 - (void)getRegisterId:(CDVInvokedUrlCommand*)command;
