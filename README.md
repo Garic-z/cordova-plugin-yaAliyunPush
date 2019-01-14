@@ -34,7 +34,8 @@
 * @param  {Function} errorCallback   失败回调
 * @return {void}  
 */
-getRegisterId: function(successCallback, errorCallback)
+
+###  getRegisterId: function(successCallback, errorCallback)
 
 /**
   * 阿里云推送绑定账号名
@@ -43,7 +44,8 @@ getRegisterId: function(successCallback, errorCallback)
   * @param  {Function} errorCallback   失败回调
   * @return {void} 
   */
-bindAccount: function(account, successCallback, errorCallback) 
+
+###  bindAccount: function(account, successCallback, errorCallback) 
 
 /**
   * 阿里云推送绑定标签
@@ -52,7 +54,8 @@ bindAccount: function(account, successCallback, errorCallback)
   * @param  {Function} errorCallback   失败回调
   * @return {void}  
   */
-bindTags: function(tags, successCallback, errorCallback) 
+
+###  bindTags: function(tags, successCallback, errorCallback) 
 
 /**
   * 阿里云推送解除绑定标签
@@ -61,7 +64,8 @@ bindTags: function(tags, successCallback, errorCallback)
   * @param  {Function} errorCallback   失败回调
   * @return {void}               
   */
-unbindTags: function(tags, successCallback, errorCallback)
+
+###  nbindTags: function(tags, successCallback, errorCallback)
 
 /**
   * 阿里云推送解除绑定标签
@@ -76,24 +80,29 @@ listTags: function(successCallback, errorCallback)
   * 阿里云推送消息透传回调
   * @param  {Function} successCallback 成功回调
   */
-onMessage(sucessCallback) ;
+
+###  onMessage(sucessCallback) ;
 
 # sucessCallback:调用成功回调方法，注意没有失败的回调，返回值结构如下：
-  #json: {
-    type:string 消息类型,
-    title:string '阿里云推送',
-    content:string '推送的内容',
-    extra:string | Object<k,v> 外健,
-    url:路由
-  }
 
-  #消息类型
-  {
-    message:透传消息，
-    notification:通知接收，
-    notificationOpened:通知点击，
-    notificationReceived：通知到达，
-    notificationRemoved：通知移除，
-    notificationClickedWithNoAction：通知到达，
-    notificationReceivedInApp：通知到达打开 app
-  }
+/**
+  * #json: {
+  *  type:string 消息类型,
+  *  title:string '阿里云推送',
+  *  content:string '推送的内容',
+  *  extra:string | Object<k,v> 外健,
+  *  url:路由
+  *}
+  *
+  *#消息类型
+  *{
+  *  message:透传消息，
+  *  notification:通知接收，
+  *  notificationOpened:通知点击，
+  *  notificationReceived：通知到达，
+  *  notificationRemoved：通知移除，
+  *  notificationClickedWithNoAction：通知到达，
+  *  notificationReceivedInApp：通知到达打开 app
+  *}
+  */
+  
