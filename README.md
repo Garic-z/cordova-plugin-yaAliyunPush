@@ -65,7 +65,7 @@
   * @return {void}               
   */
 
-###  nbindTags: function(tags, successCallback, errorCallback)
+###  unbindTags: function(tags, successCallback, errorCallback)
 
 /**
   * 阿里云推送解除绑定标签
@@ -104,5 +104,6 @@ listTags: function(successCallback, errorCallback)
   *  notificationClickedWithNoAction：通知到达，
   *  notificationReceivedInApp：通知到达打开 app
   *}
+  *
   */
   
