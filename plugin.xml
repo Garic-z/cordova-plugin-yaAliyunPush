@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-yaAliyunPush" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-yaaliyunpush" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
   <name>yaAliyunpush</name>
   <js-module name="AliyunPush" src="www/yaAliyunpush.js">
     <clobbers target="AliyunPush" />
@@ -17,7 +17,7 @@
   <platform name="android">
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="AliyunPush">
-        <param name="android-package" value="com.ya.aliyunpush" />
+        <param name="android-package" value="com.ya.yaaliyunpush.AliyunPush" />
         <param name="onload" value="true" />
       </feature>
     </config-file>
@@ -27,7 +27,6 @@
       <uses-permission android:name="android.permission.INTERNET" />
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
       <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
       <uses-permission android:name="android.permission.WAKE_LOCK" />
       <uses-permission android:name="android.permission.READ_PHONE_STATE" />
       <uses-permission android:name="android.permission.RESTART_PACKAGES" />
@@ -127,7 +126,7 @@
       <activity android:name="com.alibaba.sdk.android.push.keeplive.PushExtActivity" android:configChanges="keyboardHidden|orientation|screenSize|navigation|keyboard" android:excludeFromRecents="true" android:exported="false" android:finishOnTaskLaunch="false" android:launchMode="singleInstance" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:process=":channel">
       </activity>
       <!-- 消息接收监听器 （用户可自主扩展） -->
-      <receiver android:name="com.ya.aliyunpush.IMessageReceiver" android:exported="false">
+      <receiver android:name="com.ya.yaaliyunpush.IMessageReceiver" android:exported="false">
           <!-- 为保证receiver安全，建议设置不可导出，如需对其他应用开放可通过android：permission进行限制 -->
           <intent-filter>
               <action android:name="com.alibaba.push2.action.NOTIFICATION_OPENED" />
@@ -142,10 +141,9 @@
       <meta-data android:name="com.alibaba.app.appkey" android:value="$ANDROID_KEY" />
       <meta-data android:name="com.alibaba.app.appsecret" android:value="$ANDROID_SECRET" />
     </config-file>
-    <source-file src="src/android/MainApplication.java" target-dir="src/cordova-plugin-yaAliyunPush/yaAliyunpush" />
-    <source-file src="src/android/AliyunPush.java" target-dir="src/cordova-plugin-yaAliyunPush/yaAliyunpush" />
-    <source-file src="src/android/IMessageReceiver.java" target-dir="src/cordova-plugin-yaAliyunPush/yaAliyunpush" />
-    <lib-file src="src/android/libs/alicloud-android-beacon-1.0.1.jar" />
+    <source-file src="src/android/MainApplication.java" target-dir="src/com/ya/yaaliyunpush" />
+    <source-file src="src/android/AliyunPush.java" target-dir="src/com/ya/yaaliyunpush" />
+    <source-file src="src/android/IMessageReceiver.java" target-dir="src/com/ya/yaaliyunpush" />
     <lib-file src="src/android/libs/alicloud-android-beacon-1.0.1.jar" />
     <lib-file src="src/android/libs/alicloud-android-ut-5.1.0.jar" />
     <lib-file src="src/android/libs/alicloud-android-utils-1.1.3.jar" />

@@ -1,4 +1,4 @@
-package com.ya.aliyunpush;
+package com.ya.yaaliyunpush;
 
 
 import android.app.Activity;

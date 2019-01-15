@@ -1,4 +1,4 @@
-package com.ya.aliyunpush;
+package com.ya.yaaliyunpush;
 
 import android.app.VoiceInteractor;
 import android.content.Context;
