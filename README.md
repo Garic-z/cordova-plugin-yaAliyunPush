@@ -1,6 +1,6 @@
 # cordova-plugin-yaAliyunpush
 
-## 请将阿里云官网下载的配置文件AliyunEmasServices-Info.plist  已 source code 方式替换本插件.plist
+## iOS:请将阿里云官网下载的配置文件AliyunEmasServices-Info.plist  已 source code 方式替换本插件.plist
 
 ## Install
 
