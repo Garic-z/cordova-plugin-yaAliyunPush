@@ -15,7 +15,8 @@ repositories{
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile (name:'alicloud-android-push-3.1.3', ext: 'aar')
+    compile (name:'alicloud-android-push-3.1.4', ext: 'aar')
+    compile (name:'alicloud-android-third-push-3.0.5', ext: 'aar')
 }
 
 android {
