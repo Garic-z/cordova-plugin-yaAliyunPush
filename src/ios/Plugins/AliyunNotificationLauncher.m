@@ -222,8 +222,8 @@
     NSLog(@"content = [%@], badge = [%ld], sound = [%@], Extras = [%@]", content, (long)badge, sound, Extras);
     // iOS badge 清0
     application.applicationIconBadgeNumber = 0;
-    // 同步通知角标数到服务端
-    // [self syncBadgeNum:0];
+    // 同步通知角标数到服务端 服务端
+    [self syncBadgeNum:0];
     // 通知打开回执上报
     // [CloudPushSDK handleReceiveRemoteNotification:userInfo];(Deprecated from v1.8.1)
     [CloudPushSDK sendNotificationAck:userInfo];
@@ -308,7 +308,7 @@
     // 通知角标数清0
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // 同步角标数到服务端
-    // [self syncBadgeNum:0];
+    [self syncBadgeNum:0];
     // 通知打开回执上报
     [CloudPushSDK sendNotificationAck:userInfo];
     NSLog(@"Notification, date: %@, title: %@, subtitle: %@, body: %@, badge: %d, extras: %@.", noticeDate, title, subtitle, body, badge, extras);
