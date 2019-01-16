@@ -116,12 +116,13 @@ listTags: function(successCallback, errorCallback)
   小米开发者账号注册：[小米开放平台](https://dev.mi.com/console/);
   华为开发者账号注册：[华为开发者联盟](https://developer.huawei.com/consumer/cn/?spm=5176.doc30067.2.14.rPh7O7)
 ### 在应用中初始化辅助通道
-   #MainApplication.initCloudChannel(Context applicationContext)下初始化
-   /**
-     * MiPushRegister.register(applicationContext, "App_Id", "App_key"); // 初始化小米辅助推送
-     * HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
-     * GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
-     */
+### MainApplication.initCloudChannel(Context applicationContext)下初始化
+/**{
+  * MiPushRegister.register(applicationContext, "App_Id", "App_key"); // 初始化小米辅助推送
+  * HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
+  * GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
+  *}
+  */
 
 
 
