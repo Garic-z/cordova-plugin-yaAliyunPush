@@ -115,5 +115,32 @@ listTags: function(successCallback, errorCallback)
 ### 关于小米、华为开发者账号的注册请参照：
   小米开发者账号注册：[小米开放平台](https://dev.mi.com/console/);
   华为开发者账号注册：[华为开发者联盟](https://developer.huawei.com/consumer/cn/?spm=5176.doc30067.2.14.rPh7O7)
+### 在应用中初始化辅助通道
+   MainApplication.initCloudChannel(Context applicationContext)下初始化
+   /**
+     * 初始化云推送通道
+     * @param applicationContext
+     */
+   /*private void initCloudChannel(Context applicationContext) {
+      // 创建notificaiton channel
+        this.createNotificationChannel();
+        PushServiceFactory.init(applicationContext);
+        CloudPushService pushService = PushServiceFactory.getCloudPushService();
+        pushService.register(applicationContext, new CommonCallback() {
+          @Override
+          public void onSuccess(String response) {
+            Log.d(TAG, "init cloudchannel success");
+          }
+          @Override
+          public void onFailed(String errorCode, String errorMessage) {
+            Log.d(TAG, "init cloudchannel failed -- errorcode:" + errorCode + " -- errorMessage:" + errorMessage);
+          }
+          });
+          // 初始化第三方推送通道
+          MiPushRegister.register(applicationContext, "App_Id", "App_key"); // 初始化小米辅助推送
+          HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
+          GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
+      }*/
+
 
   
