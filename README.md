@@ -131,7 +131,8 @@ listTags: function(successCallback, errorCallback)
    [Android SDK: Android 8.0以上设备](https://help.aliyun.com/knowledge_detail/67398.html)
 
 ###MainApplication.initCloudChannel(Context applicationContext)下调用如下代码:
-/**private void createNotificationChannel() {
+/**
+  *private void createNotificationChannel() {
   * if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
   *    NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
   *    // 通知渠道的id
