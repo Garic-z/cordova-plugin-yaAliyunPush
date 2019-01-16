@@ -109,7 +109,7 @@ listTags: function(successCallback, errorCallback)
   *
   */
 
-##  小米华为辅助通道配置
+##  第三方辅助通道配置&Android8.0+设备接收通知设置
 
   [移动辅助通道配置](https://help.aliyun.com/document_detail/30067.html?spm=5176.doc30064.6.621.uWVKlw)
 ### 关于小米、华为开发者账号的注册请参照：
@@ -117,13 +117,13 @@ listTags: function(successCallback, errorCallback)
   华为开发者账号注册：[华为开发者联盟](https://developer.huawei.com/consumer/cn/?spm=5176.doc30067.2.14.rPh7O7)
 ### 在应用中初始化辅助通道
 ### MainApplication.initCloudChannel(Context applicationContext)下初始化
-/**{
-  * MiPushRegister.register(applicationContext, "App_Id", "App_key"); // 初始化小米辅助推送
-  * HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
-  * GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
-  *}
-  *
-  */
+{
+   MiPushRegister.register(applicationContext, "App_Id", "App_key"); // 初始化小米辅助推送
+   HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
+   GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
+}
+
+
 
 
 
