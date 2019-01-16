@@ -109,7 +109,8 @@ listTags: function(successCallback, errorCallback)
   *
   */
 
-###  小米华为辅助通道配置
+##  小米华为辅助通道配置
+
   [移动辅助通道配置](https://help.aliyun.com/document_detail/30067.html?spm=5176.doc30064.6.621.uWVKlw)
 ### 关于小米、华为开发者账号的注册请参照：
   小米开发者账号注册：[小米开放平台](https://dev.mi.com/console/);
