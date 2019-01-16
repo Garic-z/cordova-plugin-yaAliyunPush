@@ -116,6 +116,7 @@ listTags: function(successCallback, errorCallback)
   小米开发者账号注册：[小米开放平台](https://dev.mi.com/console/);
   华为开发者账号注册：[华为开发者联盟](https://developer.huawei.com/consumer/cn/?spm=5176.doc30067.2.14.rPh7O7)
 ### 在应用中初始化辅助通道
+###各渠道相应的id和key需要在插件项目同提前填入配置;
 ### MainApplication.initCloudChannel(Context applicationContext)下初始化
 /**{
   * MiPushRegister.register(applicationContext, "App_Id", "App_key"); // 初始化小米辅助推送
