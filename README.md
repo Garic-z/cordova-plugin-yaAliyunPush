@@ -122,6 +122,7 @@ listTags: function(successCallback, errorCallback)
   * HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
   * GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
   *}
+  *
   */
 
 
