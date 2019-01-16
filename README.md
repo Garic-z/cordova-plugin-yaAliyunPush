@@ -125,13 +125,12 @@ listTags: function(successCallback, errorCallback)
   *
   */
 
-###移动推送Android SDK: Android 8.0以上设备通知接收不到？
+### 移动推送Android SDK: Android 8.0以上设备通知接收不到？
 
-   [推送8.0设置](https://help.aliyun.com/knowledge_detail/67398.html)
+   [Android SDK: Android 8.0以上设备](https://help.aliyun.com/knowledge_detail/67398.html)
 
-### MainApplication.initCloudChannel(Context applicationContext)下调用如下代码:
-/**
-  *private void createNotificationChannel() {
+###MainApplication.initCloudChannel(Context applicationContext)下调用如下代码:
+/**private void createNotificationChannel() {
   * if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
   *    NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
   *    // 通知渠道的id
