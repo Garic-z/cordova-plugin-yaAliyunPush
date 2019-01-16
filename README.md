@@ -128,7 +128,7 @@ listTags: function(successCallback, errorCallback)
 
 ### 移动推送Android SDK: Android 8.0以上设备通知接收不到？
 
-   [Android SDK: Android 8.0以上设备](https://help.aliyun.com/knowledge_detail/67398.html)
+   [Android 8.0以上设备通知接收](https://help.aliyun.com/knowledge_detail/67398.html)
 
 ###MainApplication.initCloudChannel(Context applicationContext)下调用如下代码:
 /**
