@@ -39,7 +39,7 @@ public class AliyunPush extends CordovaPlugin {
     public static CallbackContext pushCallbackContext = null;
 
 
-    final CloudPushService pushService = PushServiceFactory.getCloudPushService();
+    static final CloudPushService pushService = PushServiceFactory.getCloudPushService();
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -54,7 +54,7 @@ public class AliyunPush extends CordovaPlugin {
         // 创建notificaiton channel
         createNotificationChannel(applicationContext);
         PushServiceFactory.init(applicationContext);
-        CloudPushService pushService = PushServiceFactory.getCloudPushService();
+//        CloudPushService pushService = PushServiceFactory.getCloudPushService();
         pushService.register(applicationContext, new CommonCallback() {
             @Override
             public void onSuccess(String response) {
