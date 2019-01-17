@@ -1,9 +1,5 @@
 package com.ya.yaaliyunpush;
 
-/**
- * Created by leo on 2018/4/23.
- */
-
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
