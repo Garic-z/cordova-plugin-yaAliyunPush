@@ -15,21 +15,32 @@
 - 通过 Cordova Plugins 安装，要求 Cordova CLI 5.0+：
 
   ```shell
-  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=${ANDROID_KEY} --variable ANDROID_SECRET=${ANDROID_SECRET} --variable IOS_KEY=${IOS_KEY} --variable IOS_SECRET=${IOS_SECRET}
+  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=${ANDROID_KEY} --variable ANDROID_SECRET=${ANDROID_SECRET} --variable IOS_KEY=${IOS_KEY} --variable IOS_SECRET=${IOS_SECRET} --variable MIID=${miid} --variable MIKEY=${mikey}
   ```
-  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111
+  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111 --variable MIID=1111111 --variable MIKEY=1111111
   
 - 或下载到本地安装：
 
   ```shell
-  cordova plugin add Your_Plugin_Path --variable ANDROID_KEY=${ANDROID_KEY} --variable ANDROID_SECRET=${ANDROID_SECRET} --variable IOS_KEY=${IOS_KEY} --variable IOS_SECRET=${IOS_SECRET}
+  cordova plugin add Your_Plugin_Path --variable ANDROID_KEY=${ANDROID_KEY} --variable ANDROID_SECRET=${ANDROID_SECRET} --variable IOS_KEY=${IOS_KEY} --variable IOS_SECRET=${IOS_SECRET} --variable MIID=${miid} --variable MIKEY=${mikey}
   ```
-  cordova plugin add Your_Plugin_Path --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111
+  cordova plugin add Your_Plugin_Path --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111 --variable MIID=1111111 --variable MIKEY=1111111
 
 
 ## Usage
 
 ### API
+
+/**
+* Android端初始化,添加小米,华为等第三方推送通道
+* @param  {Function} successCallback 成功回调
+* @param  {Function} errorCallback   失败回调
+* @return {void}
+*/
+
+###  initForAndroid: function(successCallback, errorCallback)
+
+
 /**
 * 获取设备唯一标识deviceId，deviceId为阿里云移动推送过程中对设备的唯一标识（并不是设备UUID/UDID）
 * @param  {Function} successCallback 成功回调
@@ -126,6 +137,12 @@ listTags: function(successCallback, errorCallback)
   *
   */
 
+### 辅助弹窗
+
+> - 辅助弹窗可以确保应用后台被清理，仍能收到推送通知
+> - 参考阿里云推送文档https://help.aliyun.com/document_detail/30067.html
+> - 服务器端需设置AndroidPopupActivity参数为{package-name}.alipush.AliPushActivity
+
 ### 移动推送Android SDK: Android 8.0以上设备通知接收不到？
 
    [Android 8.0以上设备通知接收](https://help.aliyun.com/knowledge_detail/67398.html)
@@ -157,3 +174,4 @@ listTags: function(successCallback, errorCallback)
   * }
   *
   */
+

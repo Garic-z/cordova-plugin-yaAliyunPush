@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-yaaliyunpush" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-yaaliyunpush" version="1.0.0"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
   <name>yaAliyunpush</name>
   <js-module name="AliyunPush" src="www/yaAliyunpush.js">
     <clobbers target="AliyunPush" />
@@ -12,15 +14,23 @@
   <preference name="ANDROID_SECRET" default="" />
   <preference name="IOS_KEY" default="" />
   <preference name="IOS_SECRET" default="" />
-  <hook type="after_plugin_install" src="scripts/after_plugin_install.js" />
-  <hook type="before_plugin_rm" src="scripts/before_plugin_rm.js" />
+  <preference name="MIID" default=" " />
+  <preference name="MIKEY" default=" " />
   <platform name="android">
+    <hook type="after_plugin_install" src="scripts/after_plugin_install.js" />
+    <hook type="before_plugin_rm" src="scripts/before_plugin_rm.js" />
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="AliyunPush">
         <param name="android-package" value="com.ya.yaaliyunpush.AliyunPush" />
         <param name="onload" value="true" />
       </feature>
+        <preference name="MIID" value="\$MIID"/>
+        <preference name="MIKEY" value="\$MIKEY"/>
     </config-file>
+      <!--<config-file target="./res/values/strings.xml" parent="/resources">-->
+          <!--<string name="miid">$MIID</string>-->
+          <!--<string name="mikey">$MIKEY</string>-->
+      <!--</config-file>-->
     <config-file target="AndroidManifest.xml" parent="/*">
       <!-- 阿里云推送相关权限 -->
       <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -138,6 +148,8 @@
               <action android:name="com.alibaba.sdk.android.push.RECEIVE" />
           </intent-filter>
       </receiver>
+        <activity android:exported="true" android:name=".alipush.AliPushActivity">
+        </activity>
       <meta-data android:name="com.alibaba.app.appkey" android:value="$ANDROID_KEY" />
       <meta-data android:name="com.alibaba.app.appsecret" android:value="$ANDROID_SECRET" />
     </config-file>

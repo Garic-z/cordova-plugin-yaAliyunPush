@@ -2,10 +2,19 @@ package com.ya.yaaliyunpush;
 
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
+import android.util.Log;
 
 import com.alibaba.sdk.android.push.CloudPushService;
 import com.alibaba.sdk.android.push.CommonCallback;
 import com.alibaba.sdk.android.push.noonesdk.PushServiceFactory;
+import com.alibaba.sdk.android.push.register.GcmRegister;
+import com.alibaba.sdk.android.push.register.HuaWeiRegister;
+import com.alibaba.sdk.android.push.register.MiPushRegister;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -37,6 +46,51 @@ public class AliyunPush extends CordovaPlugin {
         LOG.d(LOG_TAG, "AliyunPush#initialize");
         super.initialize(cordova, webView);
     }
+    /**
+     * 初始化云推送通道
+     * @param applicationContext
+     */
+    public static void initCloudChannel(Context applicationContext) {
+        // 创建notificaiton channel
+        createNotificationChannel(applicationContext);
+        PushServiceFactory.init(applicationContext);
+        CloudPushService pushService = PushServiceFactory.getCloudPushService();
+        pushService.register(applicationContext, new CommonCallback() {
+            @Override
+            public void onSuccess(String response) {
+                Log.d(LOG_TAG, "init cloudchannel success");
+            }
+            @Override
+            public void onFailed(String errorCode, String errorMessage) {
+                Log.d(LOG_TAG, "init cloudchannel failed -- errorcode:" + errorCode + " -- errorMessage:" + errorMessage);
+            }
+        });
+
+    }
+
+    public static void createNotificationChannel(Context applicationContext) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager mNotificationManager = (NotificationManager) applicationContext.getSystemService(Context.NOTIFICATION_SERVICE);
+            // 通知渠道的id
+            String id = "1";
+            // 用户可以看到的通知渠道的名字.
+            CharSequence name = "notification channel";
+            // 用户可以看到的通知渠道的描述
+            String description = "notification description";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(id, name, importance);
+            // 配置通知渠道的属性
+            mChannel.setDescription(description);
+            // 设置通知出现时的闪灯（如果 android 设备支持的话）
+            mChannel.enableLights(true);
+            mChannel.setLightColor(Color.RED);
+            // 设置通知出现时的震动（如果 android 设备支持的话）
+            mChannel.enableVibration(true);
+            mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            //最后在notificationmanager中创建该通知渠道
+            mNotificationManager.createNotificationChannel(mChannel);
+        }
+    }
 
 
 
@@ -49,7 +103,17 @@ public class AliyunPush extends CordovaPlugin {
         LOG.d(LOG_TAG, "AliyunPush#execute");
 
         boolean ret = false;
-
+        if("initForAndroid".equalsIgnoreCase(action)) {
+            Context applicationContext = cordova.getActivity().getApplicationContext();
+            String MIID = preferences.getString("MIID", "");
+            String MIKEY = preferences.getString("MIKEY", "");
+            MiPushRegister.register(applicationContext, MIID,  MIKEY); // 初始化小米辅助推送
+            HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
+//            GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
+            callbackContext.success(MIID+","+MIKEY);
+            sendNoResultPluginResult(callbackContext);
+            ret =  true;
+        }
         if("onMessage".equalsIgnoreCase(action)){
             pushCallbackContext = callbackContext;
             ret =  true;

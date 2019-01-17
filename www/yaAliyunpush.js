@@ -18,6 +18,10 @@ var AliyunPush = {
         }
     },
 
+    initForAndroid: function (successCallback, errorCallback) {
+        this.callNative('initForAndroid', [], successCallback);
+    },
+
     /**
      * 获取设备唯一标识deviceId，deviceId为阿里云移动推送过程中对设备的唯一标识（并不是设备UUID/UDID）
      * @param  {Function} successCallback 成功回调
