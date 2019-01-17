@@ -10,6 +10,8 @@
 > - ANDROID_SECRET:ANDROID SECRET
 > - IOS_KEY:ios key
 > - IOS_SECRET:ios SECRET
+> - MIID: 小米AppID
+> - MIKEY: 小米AppKey
 > - Capabilities 中打开 Push Notifications 开关在 XCode7 中这里的开关不打开，推送也是可以正常使用的，但是在 XCode8 中，这里的开关必须要打开
 
 - 通过 Cordova Plugins 安装，要求 Cordova CLI 5.0+：
@@ -127,12 +129,13 @@ listTags: function(successCallback, errorCallback)
   小米开发者账号注册：[小米开放平台](https://dev.mi.com/console/);
   华为开发者账号注册：[华为开发者联盟](https://developer.huawei.com/consumer/cn/?spm=5176.doc30067.2.14.rPh7O7)
 ### 在应用中初始化辅助通道
-###各渠道相应的id和key需要在插件项目同提前填入配置;
-### MainApplication.initCloudChannel(Context applicationContext)下初始化
+###小米的id和key在安装插件时有参数传入;
+### 调用initForAndroid()初始化时,注册辅助通道
 /**{
-  * MiPushRegister.register(applicationContext, "App_Id", "App_key"); // 初始化小米辅助推送
-  * HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
-  * GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
+  *  String MIID = preferences.getString("MIID", "");
+  *  String MIKEY = preferences.getString("MIKEY", "");
+  *  MiPushRegister.register(applicationContext, MIID,  MIKEY); // 初始化小米辅助推送
+  *  HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
   *}
   *
   */
@@ -141,12 +144,14 @@ listTags: function(successCallback, errorCallback)
 
 > - 辅助弹窗可以确保应用后台被清理，仍能收到推送通知
 > - 参考阿里云推送文档https://help.aliyun.com/document_detail/30067.html
-> - 服务器端需设置AndroidPopupActivity参数为{package-name}.alipush.AliPushActivity
+> - 服务器端需指定点击通知后要打开的Activity,该Activity是继承AndroidPopupActivity的{package-name}.alipush.AliPushActivity.(注:package-name是当前APP应用包名)
+> - AndroidPopupActivity中提供抽象方法onSysNoticeOpened()，实现该方法后可获取到辅助弹窗通知的标题、内容和额外参数，在通知点击时触发，原本的通知回调onNotification()和onNotificationOpened()不适用于辅助弹窗；
 
 ### 移动推送Android SDK: Android 8.0以上设备通知接收不到？
 
    [Android 8.0以上设备通知接收](https://help.aliyun.com/knowledge_detail/67398.html)
 
+> - 服务端推送时指定其通知渠道的id须与客户端id一致
 ###MainApplication.initCloudChannel(Context applicationContext)下调用如下代码:
 /**
   *private void createNotificationChannel() {
