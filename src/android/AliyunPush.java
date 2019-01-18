@@ -122,7 +122,7 @@ public class AliyunPush extends CordovaPlugin {
             }
             HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
             try {
-                createNotificationChannel(applicationContext,json.getString("id")); // 初始化小米辅助推送
+                createNotificationChannel(applicationContext,json.getString("id")); // 初始化android 8.0+辅助推送通道
             } catch (JSONException e) {
                 e.printStackTrace();
             }
