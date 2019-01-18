@@ -10,16 +10,14 @@
 > - ANDROID_SECRET:ANDROID SECRET
 > - IOS_KEY:ios key
 > - IOS_SECRET:ios SECRET
-> - MIID: 小米AppID
-> - MIKEY: 小米AppKey
 > - Capabilities 中打开 Push Notifications 开关在 XCode7 中这里的开关不打开，推送也是可以正常使用的，但是在 XCode8 中，这里的开关必须要打开
 
 - 通过 Cordova Plugins 安装，要求 Cordova CLI 5.0+：
 
   ```shell
-  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=${ANDROID_KEY} --variable ANDROID_SECRET=${ANDROID_SECRET} --variable IOS_KEY=${IOS_KEY} --variable IOS_SECRET=${IOS_SECRET} --variable MIID=${miid} --variable MIKEY=${mikey}
+  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=${ANDROID_KEY} --variable ANDROID_SECRET=${ANDROID_SECRET} --variable IOS_KEY=${IOS_KEY} --variable IOS_SECRET=${IOS_SECRET}
   ```
-  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111 --variable MIID=1111111 --variable MIKEY=1111111
+  cordova plugin add https://github.com/Garic-z/cordova-plugin-yaAliyunPush.git --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111
   
 - 或下载到本地安装：
 
@@ -34,13 +32,24 @@
 ### API
 
 /**
-* Android端初始化,添加小米,华为等第三方推送通道
+* Android端初始化,添加小米,华为等第三方推送通道,注意:只需要在android设备调用
+* @param  {JsonObject} tags          参数
 * @param  {Function} successCallback 成功回调
 * @param  {Function} errorCallback   失败回调
 * @return {void}
+*
+*调用示例:
+*if(device.platform == "Android") {
+*   var param = {
+*      id: '1', // android 8.0+ 通知通道id;
+*      miid: '2882303761517935114', // 小米渠道 APPid;
+*      mikey: '5961793538114' // 小米渠道 APPkey;
+*     }
+*     window.AliyunPush.initForAndroid(param);
+*   }
 */
 
-###  initForAndroid: function(successCallback, errorCallback)
+###  initForAndroid: function(tags, successCallback, errorCallback)
 
 
 /**

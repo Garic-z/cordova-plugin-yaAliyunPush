@@ -14,8 +14,8 @@
   <preference name="ANDROID_SECRET" default="" />
   <preference name="IOS_KEY" default="" />
   <preference name="IOS_SECRET" default="" />
-  <preference name="MIID" default=" " />
-  <preference name="MIKEY" default=" " />
+  <!--<preference name="MIID" default=" " />-->
+  <!--<preference name="MIKEY" default=" " />-->
   <platform name="android">
     <hook type="after_plugin_install" src="scripts/after_plugin_install.js" />
     <hook type="before_plugin_rm" src="scripts/before_plugin_rm.js" />
@@ -24,13 +24,9 @@
         <param name="android-package" value="com.ya.yaaliyunpush.AliyunPush" />
         <param name="onload" value="true" />
       </feature>
-        <preference name="MIID" value="\$MIID"/>
-        <preference name="MIKEY" value="\$MIKEY"/>
+        <!--<preference name="MIID" value="\$MIID"/>-->
+        <!--<preference name="MIKEY" value="\$MIKEY"/>-->
     </config-file>
-      <!--<config-file target="./res/values/strings.xml" parent="/resources">-->
-          <!--<string name="miid">$MIID</string>-->
-          <!--<string name="mikey">$MIKEY</string>-->
-      <!--</config-file>-->
     <config-file target="AndroidManifest.xml" parent="/*">
       <!-- 阿里云推送相关权限 -->
       <uses-permission android:name="android.permission.WRITE_SETTINGS" />
