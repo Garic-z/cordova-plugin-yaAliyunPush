@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.alibaba.sdk.android.push.CloudPushService;
 import com.alibaba.sdk.android.push.CommonCallback;
@@ -109,7 +110,7 @@ public class AliyunPush extends CordovaPlugin {
             ret =  true;
         }
         if("initForAndroid".equalsIgnoreCase(action)) {
-            LOG.d(LOG_TAG, "AliyunPush#initForAndroid");
+            LOG.d(LOG_TAG, "PushManager#initForAndroid");
 
             Context applicationContext = cordova.getActivity().getApplicationContext();
 //            String MIID = preferences.getString("MIID", "");
@@ -122,17 +123,17 @@ public class AliyunPush extends CordovaPlugin {
             }
             HuaWeiRegister.register(applicationContext); // 接入华为辅助推送
             try {
-                createNotificationChannel(applicationContext,json.getString("id")); // 初始化android 8.0+辅助推送通道
+                createNotificationChannel(applicationContext,json.getString("id")); // 初始化8.0+推送通道
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
+         Toast.makeText(applicationContext,"初始化成功!",Toast.LENGTH_SHORT).show();
 //            GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
 //            callbackContext.success(MIID+","+MIKEY);
 //            sendNoResultPluginResult(callbackContext);
             ret =  true;
         } else if ("getRegisterId".equalsIgnoreCase(action)) {
-             LOG.d(LOG_TAG, "AliyunPush#getRegisterId");
+             LOG.d(LOG_TAG, "PushManager#getRegisterId");
              callbackContext.success(pushService.getDeviceId());
              sendNoResultPluginResult(callbackContext);
              ret =  true;
@@ -140,7 +141,7 @@ public class AliyunPush extends CordovaPlugin {
             final String account=args.getString(0);
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
-                    LOG.d(LOG_TAG, "AliyunPush#bindAccount");
+                    LOG.d(LOG_TAG, "PushManager#bindAccount");
                         pushService.bindAccount(account, new CommonCallback() {
                             @Override
                             public void onSuccess(String s) {
@@ -162,7 +163,7 @@ public class AliyunPush extends CordovaPlugin {
 
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
-                    LOG.d(LOG_TAG, "AliyunPush#bindTags");
+                    LOG.d(LOG_TAG, "PushManager#bindTags");
 
                     if (tags != null && tags.length > 0) {
                         pushService.bindTag(pushService.DEVICE_TARGET, tags, null, new CommonCallback() {
@@ -186,7 +187,7 @@ public class AliyunPush extends CordovaPlugin {
             final String [] tags = getTagsFromArgs(args);
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
-                    LOG.d(LOG_TAG, "AliyunPush#unbindTags");
+                    LOG.d(LOG_TAG, "PushManager#unbindTags");
 
                     if (tags != null && tags.length > 0) {
 
@@ -212,7 +213,7 @@ public class AliyunPush extends CordovaPlugin {
 
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
-                    LOG.d(LOG_TAG, "AliyunPush#listTags");
+                    LOG.d(LOG_TAG, "PushManager#listTags");
                         pushService.listTags(pushService.DEVICE_TARGET,new CommonCallback(){
                             @Override
                             public void onFailed(String s, String s1) {
@@ -225,11 +226,13 @@ public class AliyunPush extends CordovaPlugin {
                                 callbackContext.success(s);
                             }
                         });
+
                 }
             });
             sendNoResultPluginResult(callbackContext);
             ret = true;
         }
+
         return ret;
     }
 
