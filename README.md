@@ -24,7 +24,7 @@
   ```shell
   cordova plugin add Your_Plugin_Path --variable ANDROID_KEY=${ANDROID_KEY} --variable ANDROID_SECRET=${ANDROID_SECRET} --variable IOS_KEY=${IOS_KEY} --variable IOS_SECRET=${IOS_SECRET} --variable MIID=${miid} --variable MIKEY=${mikey}
   ```
-  cordova plugin add Your_Plugin_Path --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111 --variable MIID=1111111 --variable MIKEY=1111111
+  cordova plugin add Your_Plugin_Path --variable ANDROID_KEY=1111111 --variable ANDROID_SECRET=1111111 --variable IOS_KEY=1111111 --variable IOS_SECRET=1111111
 
 
 ## Usage
@@ -34,8 +34,6 @@
 /**
 * Android端初始化,添加小米,华为等第三方推送通道,注意:只需要在android设备调用
 * @param  {JsonObject} tags          参数
-* @param  {Function} successCallback 成功回调
-* @param  {Function} errorCallback   失败回调
 * @return {void}
 *
 *调用示例:
@@ -49,7 +47,7 @@
 *   }
 */
 
-###  initForAndroid: function(tags, successCallback, errorCallback)
+###  initForAndroid: function(tags)
 
 
 /**
