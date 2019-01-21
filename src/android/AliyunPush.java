@@ -129,9 +129,8 @@ public class AliyunPush extends CordovaPlugin {
             }
 
 //            GcmRegister.register(applicationContext, "send_id", "application_id"); // 接入FCM/GCM初始化推送
-            callbackContext.success(MIID+","+MIKEY);
-//            sendNoResultPluginResult(callbackContext);
-            Toast.makeText(applicationContext, "初始化成功!", Toast.LENGTH_SHORT).show();
+            callbackContext.success("init success");
+            sendNoResultPluginResult(callbackContext);
             ret =  true;
         } else if ("getRegisterId".equalsIgnoreCase(action)) {
              LOG.d(LOG_TAG, "AliyunPush#getRegisterId");

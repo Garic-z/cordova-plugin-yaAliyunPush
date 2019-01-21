@@ -43,11 +43,15 @@
 *      miid: '2882303761517935114', // 小米渠道 APPid;
 *      mikey: '5961793538114' // 小米渠道 APPkey;
 *     }
-*     window.AliyunPush.initForAndroid(param);
+*     window.AliyunPush.initForAndroid(param, function (res) {
+*          alert("初始化成功")
+*      }, function(err) {
+*          alert("初始化失败")
+*      })
 *   }
 */
 
-###  initForAndroid: function(tags)
+###  initForAndroid: function(tags, successCallback, errorCallback)
 
 
 /**
